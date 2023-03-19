@@ -1,0 +1,223 @@
+#test {
+    color: black;
+}
+#formulaire{
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+
+}
+#formulaire input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#formulaire input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#formulaire input[type=submit]:hover {
+    background-color: #45a049;
+}
+#tableau .post {
+    border-bottom: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+
+/* on separe les categories du tableau par des ligne noire */
+#tableau td, #tableau th {
+    border: 1px solid #ddd;
+    padding: 40px;
+}
+#tableau tr:nth-child(even){background-color: #f2f2f2;}
+#tableau tr:hover {background-color: #ddd;}
+#tableau th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-inner {
+    max-width: 650px;
+    padding: 60px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    width: 280px;
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+  }
+  
+  .popup p {
+    margin-bottom: 20px;
+  }
+#formulaire_pop{
+    background-color: #f1f1f1;
+    padding: 0px;
+    margin: 20px;
+    border-radius: 5px;
+}
+.formulaire_pop input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.formulaire_pop input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.formulaire_pop input[type=submit]:hover {
+    background-color: #45a049;
+}
+.formulaire_pop label{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+#barre_de_recherche{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.barre_de_recherche input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#bouton_recherche{
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#bouton_recherche:hover {
+    background-color: #45a049;
+}
+
+#resultat_recherche{
+    background-color: #e90e0e;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    /*on fait un cadre autour du resultat de la recherche*/
+    border: 1px solid black;
+    
+
+}
+.resultat_recherche input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.resultat_recherche h2 {
+    margin-top: 0;
+}
+#compteur{
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    /*on fait un cadre autour du resultat de la recherche*/
+    border: 1px solid black;
+}
+#compteur h2 {
+    margin-top: 0;
+}
+#compteur p {
+    margin-bottom: 20px;
+}
+#compteur input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+#close_button{
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#close_button:hover {
+    background-color: #45a049;
+}
+/*on fait un bouton large avec un symbole +*/
+#titre_form button{
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#titre_form button:hover {
+    background-color: #45a049;
+}
+
