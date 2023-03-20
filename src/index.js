@@ -37,10 +37,26 @@ document.getElementById('formulaire').addEventListener('submit', function (e) {
     var titre = document.getElementById('titre').value;
     var description = document.getElementById('description').value;
 
+    //on récupère les posts du local storage
+    var test = JSON.parse(localStorage.getItem('posts'));
 
+    //on recupére le titre et la description des posts du local storage
+    //var titre_test = test.titre;
+    //var description_test = test.description;
 
-    //on instancie l'objet post
+    //On récupère le titre et la description du post du local storage
+    var titre_test = test[0].titre;
+    var description_test = test[0].description;
+    
+
+    //on instancie l'objet post avec titre et description ou titre_test et description_test
     var post = new Post(titre, description);
+    
+    //on instancie l'objet post avec titre et description ou titre_test et description_test
+    
+    var old_post = new Post(titre_test, description_test);
+
+    console.log(old_post);
 
 
 
@@ -55,9 +71,21 @@ document.getElementById('formulaire').addEventListener('submit', function (e) {
         post.column = "fini";
     }
     console.log(post.state);
+    if(old_post.state === "a_faire"){
+        old_post.column = "a_faire";
+    }
+    else if(old_post.state === "en_cours"){
+        old_post.column = "en_cours";
+    }
+    else if(old_post.state === "fini"){
+        old_post.column = "fini";
+    }
 
 
     posts.push(post);
+    posts.push(old_post);
+
+
 
     // Mettre à jour le tableau avec le nouveau post et le stocker dans le local storage
     ReactDOM.render(
@@ -179,6 +207,7 @@ function Tableau(props) {
                             if (post.column === "a_faire") {
                                 return (
                                     <div>
+                                        ⚪
                                         <span onClick={() => Popup(post)}>{post.getTitre()}</span>
                                     </div>
                                 );
@@ -191,6 +220,7 @@ function Tableau(props) {
                             if (post.column === "en_cours") {
                                 return (
                                     <div>
+                                        ⚪
                                         <span onClick={() => Popup(post)}>{post.getTitre()}</span>
                                     </div>
                                 );
@@ -202,6 +232,7 @@ function Tableau(props) {
                             if (post.column === "fini") {
                                 return (
                                     <div>
+                                        ⚪
                                         <span onClick={() => Popup(post)}>{post.getTitre()}</span>
                                     </div>
                                 );
@@ -368,3 +399,6 @@ ReactDOM.render(
     <Compteur />,
     document.getElementById('compteur')
 );
+
+/*var tasks = [{"title":"1.Idée","isChecked":true},{"title":"2.Marché","isChecked":true}];
+localStorage.setItem('tasks',JSON.stringify(tasks));*/
