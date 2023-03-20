@@ -38,25 +38,39 @@ document.getElementById('formulaire').addEventListener('submit', function (e) {
     var description = document.getElementById('description').value;
 
     //on récupère les posts du local storage
-    var test = JSON.parse(localStorage.getItem('posts'));
+    var local_post = JSON.parse(localStorage.getItem('posts'));
 
-    //on recupére le titre et la description des posts du local storage
-    //var titre_test = test.titre;
-    //var description_test = test.description;
 
-    //On récupère le titre et la description du post du local storage
-    var titre_test = test[0].titre;
-    var description_test = test[0].description;
-    
+
+
 
     //on instancie l'objet post avec titre et description ou titre_test et description_test
     var post = new Post(titre, description);
-    
-    //on instancie l'objet post avec titre et description ou titre_test et description_test
-    
-    var old_post = new Post(titre_test, description_test);
 
-    console.log(old_post);
+
+    //on instancie l'objet post avec titre et description ou titre_test et description_test
+    if (local_post != null) {
+        for (var i = 0; i < local_post.length; i++) {
+            var titre_local = local_post[i].title;
+            var description_local = local_post[i].description;
+
+
+
+            var post_local = new Post(titre_local, description_local);
+
+            if (post_local.state === "a_faire") {
+                post_local.column = "a_faire";
+            }
+            else if (post_local.state === "en_cours") {
+                post_local.column = "en_cours";
+            }
+            else if (post_local.state === "fini") {
+                post_local.column = "fini";
+            }
+            posts.push(post_local);
+        }
+    }
+
 
 
 
@@ -70,20 +84,13 @@ document.getElementById('formulaire').addEventListener('submit', function (e) {
     else if (post.state === "fini") {
         post.column = "fini";
     }
-    console.log(post.state);
-    if(old_post.state === "a_faire"){
-        old_post.column = "a_faire";
-    }
-    else if(old_post.state === "en_cours"){
-        old_post.column = "en_cours";
-    }
-    else if(old_post.state === "fini"){
-        old_post.column = "fini";
-    }
 
 
+
+    //on ajoute le post dans le tableau
     posts.push(post);
-    posts.push(old_post);
+
+
 
 
 
@@ -106,7 +113,7 @@ document.getElementById('formulaire').addEventListener('submit', function (e) {
     document.getElementById('error_tableau').innerHTML = "";
 
     //on met à jour le compteur de tache
-    
+
     ReactDOM.render(
         <Compteur />,
         document.getElementById('compteur')
@@ -158,6 +165,9 @@ function Tableau(props) {
         // mettre à jour la colonne du post sélectionné uniquement
         if (a_faire) {
             selectedPost.setState("a_faire");
+            //on le met à jour dans le local storage
+            
+
             console.log(selectedPost.state);
 
             props.posts[index].column = "a_faire";
@@ -172,10 +182,10 @@ function Tableau(props) {
 
             props.posts[index].column = "fini";
         }
-         else if (supprimer) {
+        else if (supprimer) {
             props.posts.splice(index, 1);
         }
-        
+
 
 
         // mettre à jour le tableau
@@ -343,19 +353,19 @@ ReactDOM.render(
 
 document.getElementById('form_recherche').addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
 
     document.getElementById('error_resultat').innerHTML = " Pas de tache";
-    
-    
-    if(document.getElementById('title') != null){
-    document.getElementById('title').innerHTML = " ";
+
+
+    if (document.getElementById('title') != null) {
+        document.getElementById('title').innerHTML = " ";
     }
-    if(document.getElementById('etat') != null){
-    document.getElementById('etat').innerHTML = " ";
+    if (document.getElementById('etat') != null) {
+        document.getElementById('etat').innerHTML = " ";
     }
-    if(document.getElementById('descrip') != null){
-    document.getElementById('descrip').innerHTML = " ";
+    if (document.getElementById('descrip') != null) {
+        document.getElementById('descrip').innerHTML = " ";
     }
 
 
@@ -375,7 +385,7 @@ document.getElementById('form_recherche').addEventListener('submit', function (e
             document.getElementById('descrip').innerHTML = posts[i].getDescription();
         }
         else {
-            document.getElementById('error_resultat').innerHTML = "Aucun résultat trouvé pour votre recherche";     
+            document.getElementById('error_resultat').innerHTML = "Aucun résultat trouvé pour votre recherche";
         }
 
     }
