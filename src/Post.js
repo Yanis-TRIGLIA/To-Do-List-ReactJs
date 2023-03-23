@@ -8,7 +8,7 @@ class Post extends React.Component {
 
         this.title = title;
         this.description = description;
-        this.state = "a_faire";
+        this.state = state;
         this.column = "";
     }
 

@@ -1,6 +1,10 @@
 #test {
-    color: black;
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
 }
+
 #formulaire{
     background-color: #f1f1f1;
     padding: 20px;
@@ -36,6 +40,11 @@
     margin: 20px;
     border-radius: 5px;
     background-color: #f1f1f1;
+  
+}
+/*le pointeur de la souris devient une main quand on passe sur une balise td*/
+#tableau td {
+    cursor: pointer;
 }
 
 /* on separe les categories du tableau par des ligne noire */
@@ -148,28 +157,22 @@
     background-color: #45a049;
 }
 
+
 #resultat_recherche{
-    background-color: #e90e0e;
+    background-color: #f1f1f1;
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
     /*on fait un cadre autour du resultat de la recherche*/
     border: 1px solid black;
-    
-
 }
-.resultat_recherche input{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.resultat_recherche h2 {
+#resultat_recherche h2 {
     margin-top: 0;
 }
+#resultat_recherche p {
+    margin-bottom: 20px;
+}
+
 #compteur{
     background-color: #f1f1f1;
     padding: 20px;

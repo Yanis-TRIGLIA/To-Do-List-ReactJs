@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
 import Post from './Post';
-
 import App from './App';
-
 
 
 
@@ -26,37 +24,21 @@ ReactDOM.render(
 //on créé un tableau de post pour stocker les posts et en utilisant le local storage
 var posts = [];
 
-
-//on instancie l'objet post si on clique sur le bouton submit
-document.getElementById('formulaire').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-
-    //on appel les valeurs du formulaire
-
-    var titre = document.getElementById('titre').value;
-    var description = document.getElementById('description').value;
+//des que la page est chargée on récupère les posts du local storage
+window.onload = function () {
 
     //on récupère les posts du local storage
     var local_post = JSON.parse(localStorage.getItem('posts'));
-
-
-
-
-
-    //on instancie l'objet post avec titre et description ou titre_test et description_test
-    var post = new Post(titre, description);
-
 
     //on instancie l'objet post avec titre et description ou titre_test et description_test
     if (local_post != null) {
         for (var i = 0; i < local_post.length; i++) {
             var titre_local = local_post[i].title;
             var description_local = local_post[i].description;
+            var state_local = local_post[i].state;
 
 
-
-            var post_local = new Post(titre_local, description_local);
+            var post_local = new Post(titre_local, description_local, state_local);
 
             if (post_local.state === "a_faire") {
                 post_local.column = "a_faire";
@@ -69,8 +51,41 @@ document.getElementById('formulaire').addEventListener('submit', function (e) {
             }
             posts.push(post_local);
         }
-    }
+        // on supprime le message d'erreur
+        document.getElementById('error_tableau').innerHTML = "";
 
+    }
+    // Mettre à jour le tableau avec le nouveau post et le stocker dans le local storage
+    ReactDOM.render(
+        <Tableau posts={posts} />,
+        document.getElementById('tab')
+    );
+
+    //on met à jour le compteur de tache
+
+    ReactDOM.render(
+        <Compteur />,
+        document.getElementById('compteur')
+    );
+
+
+}
+
+
+
+//on instancie l'objet post si on clique sur le bouton submit
+document.getElementById('formulaire').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+
+    //on appel les valeurs du formulaire
+
+    var titre = document.getElementById('titre').value;
+    var description = document.getElementById('description').value;
+
+
+    //on instancie l'objet post avec titre et description ou titre_test et description_test
+    var post = new Post(titre, description, "a_faire");
 
 
 
@@ -89,9 +104,6 @@ document.getElementById('formulaire').addEventListener('submit', function (e) {
 
     //on ajoute le post dans le tableau
     posts.push(post);
-
-
-
 
 
     // Mettre à jour le tableau avec le nouveau post et le stocker dans le local storage
@@ -165,21 +177,12 @@ function Tableau(props) {
         // mettre à jour la colonne du post sélectionné uniquement
         if (a_faire) {
             selectedPost.setState("a_faire");
-            //on le met à jour dans le local storage
-            
-
-            console.log(selectedPost.state);
-
             props.posts[index].column = "a_faire";
         } else if (en_cours) {
             selectedPost.setState("en_cours");
-            console.log(selectedPost.state);
-
             props.posts[index].column = "en_cours";
         } else if (fini) {
             selectedPost.setState("fini");
-            console.log(selectedPost.state);
-
             props.posts[index].column = "fini";
         }
         else if (supprimer) {
@@ -198,6 +201,9 @@ function Tableau(props) {
             <Compteur />,
             document.getElementById('compteur')
         );
+
+        //on met à jour le local storage
+        storePosts();
     }
 
 
@@ -205,7 +211,7 @@ function Tableau(props) {
         <table id="tableau" >
             <thead>
                 <tr>
-                    <th>a_faire</th>
+                    <th>A faire</th>
                     <th>En cours</th>
                     <th>Fini</th>
                 </tr>
@@ -329,7 +335,8 @@ function Search() {
 function Result() {
 
     return (
-        <div class='resultat_recherche'>
+        <div class="resultat_recherche" id="resultat_recherche">
+            <h2>Resultat de la recherche :</h2>
             <h3>Titre: </h3>
             <p id='title'></p>
             <br></br>
@@ -410,5 +417,3 @@ ReactDOM.render(
     document.getElementById('compteur')
 );
 
-/*var tasks = [{"title":"1.Idée","isChecked":true},{"title":"2.Marché","isChecked":true}];
-localStorage.setItem('tasks',JSON.stringify(tasks));*/
