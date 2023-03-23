@@ -18,7 +18,7 @@ Ensuite il suffira simplement de rajouter les ficher src et public à la place d
 
 <h3> 2) Vous pourrez consultez vos taches depuis un tableau :</h3>
   
-<image src="https://media.discordapp.net/attachments/927636625314431059/1088492544133959840/6.png"/>
+<image src="https://cdn.discordapp.com/attachments/927636625314431059/1088511904126865549/Screenshot_20230323-1817052.png"/>
   
 <h3> 3) Cliquer dessus pour voir leur contenue :</h3>
   
